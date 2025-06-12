@@ -1,7 +1,28 @@
-<h1>Angular Material</h1>
-
-<mat-slider min="1" max="100" step="1">
-  <input matSliderThumb value="50">
-</mat-slider>
-
-<router-outlet />
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidebar>
+    <mat-nav-list (click)="sidebar.close()">
+      <a mat-list-item routerLink="/" routerLinkActive="active-link">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a mat-list-item routerLink="about" routerLinkActive="active-link">      
+        <mat-icon>person</mat-icon>
+        <span>About</span>
+      </a>
+      <a mat-list-item routerLink="contact" routerLinkActive="active-link">
+        <mat-icon>contacts</mat-icon>
+        <span>Contact</span>
+      </a>
+      <a mat-list-item routerLink="courses" routerLinkActive="active-link">
+        <mat-icon>book</mat-icon>
+        <span>Courses</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidebar.open()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+  <router-outlet />
+</mat-sidenav-container>
