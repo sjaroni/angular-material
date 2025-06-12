@@ -5,7 +5,7 @@
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </a>
-      <a mat-list-item routerLink="about" routerLinkActive="active-link">      
+      <a mat-list-item routerLink="about" routerLinkActive="active-link">
         <mat-icon>person</mat-icon>
         <span>About</span>
       </a>
@@ -19,10 +19,21 @@
       </a>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-toolbar color="primary">
     <button mat-icon-button (click)="sidebar.open()">
       <mat-icon>menu</mat-icon>
     </button>
+    <a mat-button> <mat-icon> person_add </mat-icon>Signup </a>
+    <a mat-button> <mat-icon> account_circle </mat-icon>Login </a>
+    <a mat-button [matMenuTriggerFor]="dropdownMenu"> Pages </a>
+    <mat-menu #dropdownMenu>
+      <button mat-menu-item routerLink="/">Home</button>
+      <button mat-menu-item routerLink="about">About</button>
+      <button mat-menu-item routerLink="contact">Contact</button>
+      <button mat-menu-item routerLink="courses">Courses</button>
+    </mat-menu>
   </mat-toolbar>
+
   <router-outlet />
 </mat-sidenav-container>

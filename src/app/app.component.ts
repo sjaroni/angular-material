@@ -4,15 +4,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
+    RouterLink,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    RouterLink,
+    MatMenuModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
