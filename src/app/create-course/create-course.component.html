@@ -1,0 +1,29 @@
+<mat-horizontal-stepper [linear]="true" labelPosition="bottom" class="mat-elevation-z20">
+
+  <mat-step>
+    <ng-template matStepLabel>Welcome to Course Creation</ng-template>
+    <p>Follow the steps below to create your course.</p>
+    <div class="stepper-buttons">
+      <button mat-raised-button color="primary" matStepperNext>Start Creating</button>
+    </div>
+  </mat-step>
+>  
+
+  <mat-step error="1/2 - Please fill out the form before proceeding." [editable]="true">
+    <ng-template matStepLabel>Course Details</ng-template>
+    <app-create-course-step-one></app-create-course-step-one>
+    <div class="stepper-buttons">
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step error="2/2 - Please fill out the form before proceeding." [editable]="false">
+    <ng-template matStepLabel>Course Lessons</ng-template>
+    <app-create-course-step-two></app-create-course-step-two>
+    <div class="stepper-buttons">
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button color="accent" matStepperNext>Add Course</button>
+    </div>
+  </mat-step>
+
+</mat-horizontal-stepper>

@@ -27,6 +27,10 @@
     <a mat-button> <mat-icon> person_add </mat-icon>Signup </a>
     <a mat-button> <mat-icon> account_circle </mat-icon>Login </a>
     <a mat-button [matMenuTriggerFor]="dropdownMenu"> Pages </a>
+    <button mat-button routerLink="create-course">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-raised-button>View Course</button>
     <mat-menu #dropdownMenu>
       <button mat-menu-item routerLink="/">Home</button>
       <button mat-menu-item routerLink="about">About</button>
