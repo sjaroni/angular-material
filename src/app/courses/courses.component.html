@@ -1,9 +1,67 @@
 <div>
   <mat-tab-group>
     <mat-tab label="All Courses">
-      <p>All Courses</p>
+      @for (course of allCourses; track $index) {
+      <mat-card class="course-card">
+        <mat-card-header>
+          <mat-card-title>{{ course.title }}</mat-card-title>
+        </mat-card-header>
+
+        <img mat-card-image [src]="course.image" alt="course.title" />
+
+        <mat-card-content>
+          <p>{{ course.description }}</p>          
+        </mat-card-content>
+
+        <mat-card-actions class="course-actions">
+          <button mat-raised-button color="primary">View Course</button>
+          <button mat-raised-button color="accent">Edit Course</button>
+        </mat-card-actions>
+
+      </mat-card>
+      }
     </mat-tab>
-    <mat-tab label="Beginners"> </mat-tab>
-    <mat-tab label="Advance"> </mat-tab>
+    <mat-tab label="Beginners"> 
+       @for (course of beginnerCourses; track $index) {
+      <mat-card class="course-card">
+        <mat-card-header>
+          <mat-card-title>{{ course.title }}</mat-card-title>
+        </mat-card-header>
+
+        <img mat-card-image [src]="course.image" alt="course.title" />
+
+        <mat-card-content>
+          <p>{{ course.description }}</p>          
+        </mat-card-content>
+
+        <mat-card-actions class="course-actions">
+          <button mat-raised-button color="primary">View Course</button>
+          <button mat-raised-button color="accent">Edit Course</button>
+        </mat-card-actions>
+
+      </mat-card>
+      }
+    </mat-tab>
+    <mat-tab label="Advance">
+       @for (course of advancedCourses; track $index) {
+      <mat-card class="course-card">
+        <mat-card-header>
+          <mat-card-title>{{ course.title }}</mat-card-title>
+        </mat-card-header>
+
+        <img mat-card-image [src]="course.image" alt="course.title" />
+
+        <mat-card-content>
+          <p>{{ course.description }}</p>          
+        </mat-card-content>
+
+        <mat-card-actions class="course-actions">
+          <button mat-raised-button color="primary">View Course</button>
+          <button mat-raised-button color="accent">Edit Course</button>
+        </mat-card-actions>
+
+      </mat-card>
+      }
+       </mat-tab>
   </mat-tab-group>
 </div>
