@@ -1,1 +1,26 @@
-<p>create-course-step-one works!</p>
+<div [formGroup]="form">
+  @if(courseTitle.errors?.['minlength']){
+    <mat-error>
+      Course Title should have a minimum of 5 characters
+    </mat-error>
+  }
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      type="text"
+      placeholder="Course Title"
+      formControlName="title"      
+      #title
+    />
+    <!-- <span matPrefix>+49</span>
+    <span matTextPrefix>+49</span>
+    <span matTextSuffix>EUR</span> -->
+    <mat-hint align="end">{{ title.value.length }} / 100</mat-hint>
+    <!-- @if(form.get('title').hasError('required')){
+      moin
+    }    -->
+  </mat-form-field>
+
+
+  
+</div>
