@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-create-course-step-one',
@@ -12,12 +13,16 @@ import { MatRadioModule } from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
+    MatSelectModule,
   ],
   templateUrl: './create-course-step-one.component.html',
   styleUrl: './create-course-step-one.component.scss',
 })
 export class CreateCourseStepOneComponent {
   private fb: FormBuilder = inject(FormBuilder);
+
+  toppings = new FormControl('');
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   form = this.fb.group({
     title: [

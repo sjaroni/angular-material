@@ -1,15 +1,13 @@
 <div [formGroup]="form">
   @if(courseTitle.errors?.['minlength']){
-    <mat-error>
-      Course Title should have a minimum of 5 characters
-    </mat-error>
+  <mat-error> Course Title should have a minimum of 5 characters </mat-error>
   }
   <mat-form-field appearance="fill">
     <input
       matInput
       type="text"
       placeholder="Course Title"
-      formControlName="title"      
+      formControlName="title"
       #title
     />
     <!-- <span matPrefix>+49</span>
@@ -21,11 +19,26 @@
     }    -->
   </mat-form-field>
 
-  <!-- mat-radio-group kann nicht in mat-form-field genutzt werden! -->
+  <!-- mat-radio-group muss nicht in mat-form-field genutzt werden! -->
   <mat-radio-group formControlName="courseType">
     <mat-radio-button disabled value="free">Free</mat-radio-button>
-    <mat-radio-button [disabled]="false" value="advanced">Advanced</mat-radio-button>
+    <mat-radio-button [disabled]="false" value="advanced"
+      >Advanced</mat-radio-button
+    >
     <mat-radio-button value="premium">Premium</mat-radio-button>
   </mat-radio-group>
-  
+
+  <mat-form-field appearance="fill">
+    <mat-select [formControl]="toppings" placeholder="Category" multiple>
+      <mat-optgroup label="Creatives">
+        <mat-option value="design">Design</mat-option>
+        <mat-option value="marketing">Marketing</mat-option>
+      </mat-optgroup>
+      <mat-optgroup label="Toppings">
+        @for (topping of toppingList; track topping) {
+          <mat-option [value]="topping">{{topping}}</mat-option>
+        }
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
 </div>
