@@ -36,9 +36,25 @@
       </mat-optgroup>
       <mat-optgroup label="Toppings">
         @for (topping of toppingList; track topping) {
-          <mat-option [value]="topping">{{topping}}</mat-option>
+        <mat-option [value]="topping">{{ topping }}</mat-option>
         }
       </mat-optgroup>
     </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Publish date"
+      formControlName="publishedAt"
+      [matDatepicker]="publishedAtPicker"
+    />
+
+    <mat-hint align="end">MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="publishedAtPicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #publishedAtPicker></mat-datepicker>
   </mat-form-field>
 </div>
