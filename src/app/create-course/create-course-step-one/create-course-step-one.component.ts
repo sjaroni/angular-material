@@ -9,6 +9,7 @@ import {
   MatDatepickerModule,
   MatCalendarCellClassFunction,
 } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
@@ -20,6 +21,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatRadioModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatCheckboxModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './create-course-step-one.component.html',
@@ -56,8 +58,8 @@ export class CreateCourseStepOneComponent {
 
   higlightDate: MatCalendarCellClassFunction<Date> = (dateCell, view) => {
     const dayNumber = dateCell.getDate();
-    if(view === 'month') {
-      return (dayNumber === 2 || dayNumber === 5) ? 'highlight-date' : '';
+    if (view === 'month') {
+      return dayNumber === 2 || dayNumber === 5 ? 'highlight-date' : '';
     }
     // if(view === 'month' && dayNumber % 2 === 0) {
     //   return 'highlight-date';

@@ -55,6 +55,19 @@
       matIconSuffix
       [for]="publishedAtPicker"
     ></mat-datepicker-toggle>
-    <mat-datepicker #publishedAtPicker [dateClass]="higlightDate"></mat-datepicker>
+    <mat-datepicker
+      #publishedAtPicker
+      [dateClass]="higlightDate"
+    ></mat-datepicker>
   </mat-form-field>
+
+  <mat-checkbox
+    color="primary"
+    formControlName="downloadAllowed"
+  >
+    <span>Allowed Download?</span>
+  </mat-checkbox>
+  <mat-checkbox [disabled]="true">Disabled</mat-checkbox>
+  <mat-checkbox [indeterminate]="true">Indeterminate</mat-checkbox>
+  <mat-checkbox [checked]="true">Selected</mat-checkbox>
 </div>
