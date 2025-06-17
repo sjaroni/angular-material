@@ -5,9 +5,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import {provideNativeDateAdapter} from '@angular/material/core';
-
+import {
+  MatDatepickerModule,
+  MatCalendarCellClassFunction,
+} from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-create-course-step-one',
@@ -17,7 +19,7 @@ import {provideNativeDateAdapter} from '@angular/material/core';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './create-course-step-one.component.html',
@@ -50,6 +52,16 @@ export class CreateCourseStepOneComponent {
 
   get courseTitle() {
     return this.form.get('title');
-    // return this.form.controls['title'];
   }
+
+  higlightDate: MatCalendarCellClassFunction<Date> = (dateCell, view) => {
+    const dayNumber = dateCell.getDate();
+    if(view === 'month') {
+      return (dayNumber === 2 || dayNumber === 5) ? 'highlight-date' : '';
+    }
+    // if(view === 'month' && dayNumber % 2 === 0) {
+    //   return 'highlight-date';
+    // }
+    return '';
+  };
 }
