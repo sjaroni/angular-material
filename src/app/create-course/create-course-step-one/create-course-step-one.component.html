@@ -2,7 +2,7 @@
   @if(courseTitle.errors?.['minlength']){
   <mat-error> Course Title should have a minimum of 5 characters </mat-error>
   }
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="full-width">
     <input
       matInput
       type="text"
@@ -19,16 +19,25 @@
     }    -->
   </mat-form-field>
 
-  <!-- mat-radio-group muss nicht in mat-form-field genutzt werden! -->
-  <mat-radio-group formControlName="courseType">
-    <mat-radio-button disabled value="free">Free</mat-radio-button>
-    <mat-radio-button [disabled]="false" value="advanced"
-      >Advanced</mat-radio-button
-    >
-    <mat-radio-button value="premium">Premium</mat-radio-button>
-  </mat-radio-group>
+  <!-- stefan -->
+  <div style="display: flex;">
+    
 
-  <mat-form-field appearance="fill">
+  
+  <div class="half-width">
+
+    <!-- mat-radio-group muss nicht in mat-form-field genutzt werden! -->
+    
+    <mat-radio-group formControlName="courseType">
+      <mat-radio-button disabled value="free">Free</mat-radio-button>
+      <mat-radio-button [disabled]="false" value="advanced"
+      >Advanced</mat-radio-button
+      >
+      <mat-radio-button value="premium">Premium</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field appearance="fill" class="half-width">
     <mat-select [formControl]="toppings" placeholder="Category" multiple>
       <mat-optgroup label="Creatives">
         <mat-option value="design">Design</mat-option>
@@ -41,8 +50,9 @@
       </mat-optgroup>
     </mat-select>
   </mat-form-field>
-
-  <mat-form-field>
+</div>
+<div style="display:flex;">
+  <mat-form-field class="half-width" appearance="fill">
     <input
       matInput
       placeholder="Publish date"
@@ -61,17 +71,16 @@
     ></mat-datepicker>
   </mat-form-field>
 
-  <mat-checkbox
-    color="primary"
-    formControlName="downloadAllowed"
-  >
-    <span>Allowed Download?</span>
-  </mat-checkbox>
-  <mat-checkbox [disabled]="true">Disabled</mat-checkbox>
-  <mat-checkbox [indeterminate]="true">Indeterminate</mat-checkbox>
-  <mat-checkbox [checked]="true">Selected</mat-checkbox>
-
-  <mat-form-field>
+  <div class="half-width">
+    <mat-checkbox color="primary" formControlName="downloadAllowed">
+      <span>Allowed Download?</span>
+    </mat-checkbox>
+    <mat-checkbox [disabled]="true">Disabled</mat-checkbox>
+    <mat-checkbox [indeterminate]="true">Indeterminate</mat-checkbox>
+    <mat-checkbox [checked]="true">Selected</mat-checkbox>
+  </div>
+</div>
+  <mat-form-field class="full-width" appearance="fill">
     <textarea
       matInput
       placeholder="Description"
@@ -79,6 +88,6 @@
       cdkTextareaAutosize
       [cdkAutosizeMinRows]="3"
       [cdkAutosizeMaxRows]="10"
-    ></textarea></mat-form-field>
-  
+    ></textarea>
+  </mat-form-field>
 </div>
