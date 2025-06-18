@@ -27,7 +27,13 @@
     <a mat-button> <mat-icon> person_add </mat-icon>Signup </a>
     <a mat-button> <mat-icon> account_circle </mat-icon>Login </a>
     <a mat-button [matMenuTriggerFor]="dropdownMenu"> Pages </a>
-    <button mat-button routerLink="create-course">
+    <button mat-button routerLink="create-course"
+      matTooltip="Create a new course"
+      matTooltipPosition="left"
+      matTooltipShowDelay="10"
+      matTooltipHideDelay="1000"
+      matTooltipClass="custom-tooltip"
+      >
       <mat-icon>add</mat-icon>
     </button>
     <button mat-raised-button>View Course</button>
