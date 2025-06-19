@@ -3,8 +3,9 @@
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
 :root {
   @include mat.toolbar-overrides((
-    container-background-color: var(--mat-toolbar-background, #3f51b5),
-    container-text-color: var(--mat-toolbar-text, #ffffff),
+    // container-background-color: var(--mat-toolbar-background, #3f51b5),
+    container-text-color: var(--mat-sys-primary),
+    container-background-color: var(--mat-sys-primary-container),
   ));
 }
 

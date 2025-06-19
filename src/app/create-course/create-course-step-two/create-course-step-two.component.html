@@ -1,1 +1,6 @@
-<p>create-course-step-two works!</p>
+<button mat-raised-button (click)="openDialog()">Pick one</button>
+@if (myReturnValue()) {
+<li>
+  You chose: <em>{{ myReturnValue() }}</em>
+</li>
+}
