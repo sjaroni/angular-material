@@ -1,1 +1,25 @@
-<p>about works!</p>
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Kategorie auswählen</mat-label>
+  <input
+    type="text"
+    matInput
+    [formControl]="categoryCtrl"
+    [matAutocomplete]="auto"
+  />
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCategory">
+    @for (cat of filteredCategories$ | async; track $index) {
+      <mat-option [value]="cat">
+        {{ cat.name }}
+      </mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
+
+<!-- Detailbereich -->
+@if (selectedCategory) {
+  <div class="details">
+    <h3>{{ selectedCategory.name }}</h3>
+    <p>{{ selectedCategory.description }}</p>
+  </div>
+}
