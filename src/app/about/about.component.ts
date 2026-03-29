@@ -26,26 +26,38 @@ export interface Category {
   styleUrl: './about.component.scss',
 })
 export class AboutComponent {
-  categoryCtrl = new FormControl<Category | null>(null);
-
   categories: Category[] = [
     { id: 1, name: 'Sport', description: 'Sehr lange Beschreibung...' },
     { id: 2, name: 'Technik', description: 'Noch längere Beschreibung...' },
     // ...
   ];
 
-  filteredCategories$: Observable<Category[]>;
+  categoryCtrl = new FormControl<string | Category>('');
 
+  filteredCategories$ = this.categoryCtrl.valueChanges.pipe(
+    startWith(''),
+    map((value) => (typeof value === 'string' ? value : (value?.name ?? ''))),
+    map((name) => this.filter(name)),
+  );
+
+  // 🔥 Neue Logik: ausgewählte Kategorie ODER passende Kategorie per Texteingabe
   get selectedCategory(): Category | null {
-    return this.categoryCtrl.value;
-  }
+    const value = this.categoryCtrl.value;
 
-  constructor() {
-    this.filteredCategories$ = this.categoryCtrl.valueChanges.pipe(
-      startWith(''),
-      map((value) => (typeof value === 'string' ? value : (value?.name ?? ''))),
-      map((name) => this.filter(name)),
-    );
+    // Fall 1: echte Auswahl → value ist ein Objekt
+    if (value && typeof value !== 'string') {
+      return value;
+    }
+
+    // Fall 2: Texteingabe → prüfen, ob Name existiert
+    if (typeof value === 'string' && value.trim().length > 0) {
+      const match = this.categories.find(
+        (c) => c.name.toLowerCase() === value.toLowerCase(),
+      );
+      return match ?? null;
+    }
+
+    return null;
   }
 
   displayCategory(cat: Category | null): string {
